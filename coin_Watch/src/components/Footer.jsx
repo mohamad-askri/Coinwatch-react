@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-import './Dist/Styles/style.css'
-import './Dist/Bootstrap/css/bootstrap.min.css'
-import './Dist/Styles/font.css'
-import './Dist/Styles/dark-style.css'
-import './Dist/Fonts/css/all.css'
+import './destination/Styles/style.css'
+import './destination/Bootstrap/css/bootstrap.min.css'
+import './destination/Styles/font.css'
+import './destination/Styles/dark-style.css'
+import './destination/Fonts/css/all.css'
 class Footer extends Component {
     render() {
         return (

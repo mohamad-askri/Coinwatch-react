@@ -1,12 +1,12 @@
 /*
 import React, {useEffect, useState} from 'react';
 
-import './Dist/Styles/style.css';
-import './Dist/Bootstrap/css/bootstrap.min.css';
-import './Dist/Bootstrap/js/bootstrap.bundle.min.js'
-import './Dist/Styles/font.css';
-import './Dist/Styles/dark-style.css';
-import './Dist/Fonts/css/all.css';
+import './destination/Styles/style.css';
+import './destination/Bootstrap/css/bootstrap.min.css';
+import './destination/Bootstrap/js/bootstrap.bundle.min.js'
+import './destination/Styles/font.css';
+import './destination/Styles/dark-style.css';
+import './destination/Fonts/css/all.css';
 
 import axios from "axios";
 import {TrendingCoins} from "../config/api.jsx";

@@ -88,7 +88,7 @@ export const CoinList = () => {
                                         </div>
                                     </div>
                                     <div className="coin-small-chart col-4">
-                                        <img src="Dist/Images/Charts/Chart.svg" alt="Chart" className="img-fluid"/>
+                                        <img src="destination/Images/Charts/Chart.svg" alt="Chart" className="img-fluid"/>
                                     </div>
                                     <div className="coin-value col-3">
                                         <h3 className="coin-price">{`${symbol} ${numberWithCommas(coin?.current_price.toFixed(2))}`}</h3>
