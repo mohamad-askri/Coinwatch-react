@@ -25,8 +25,8 @@ function App() {
               <Routes>
 
 
-                  <Route  path="/"  element={<Main />} exact />
-                  <Route  path="/setting"  element={<Setting />}  exact />
+                  <Route  path="/"  element={<Main/>} exact />
+                  <Route  path="/setting"  element={<Setting/>}   />
 
                   <Route  path="/coins/:id"  element={<Coinpage/>} />
               </Routes>

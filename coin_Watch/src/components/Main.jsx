@@ -79,6 +79,8 @@ import {TradingViewWidget} from "./TradingViewWidget.jsx";
 
 import {CoinList} from "./CoinList.jsx";
 import {Header} from "./Header.jsx";
+import Widget from "./Widget.jsx";
+
 export const Main = () =>{
 
 
@@ -106,6 +108,7 @@ export const Main = () =>{
 
                                <TradingViewWidget/>
 
+                  {/*<Widget/>*/}
 
                         </div>
                     </section>
