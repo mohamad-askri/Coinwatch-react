@@ -18,11 +18,11 @@ export  function Header() {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-12 header-wrapper">
-                                <a href="#"  className="extension-logo">
-                                    <h1 onClick={()=>navigate('/')}>
+                                <Link  className="extension-logo" to={'/'}>
+                                    <h1 >
                                         <img src={LOGO} width="150" alt=""/>
                                     </h1>
-                                </a>
+                                </Link>
                                 <Link className="extension-settings" to={'/setting'}>
 
 

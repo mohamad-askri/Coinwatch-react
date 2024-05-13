@@ -18,7 +18,7 @@ export function numberWithCommas(x) {
 }
 
 
-export function Main() {
+export function Mainpage() {
     const [trending, setTrending] = useState([]);
     const {currency, symbol} = CryptoState();
 
@@ -74,14 +74,15 @@ export function Main() {
 
 import React, {useEffect, useState} from 'react';
 
+import TradingViewWidget from './TradingViewWidget.jsx'; // Correct import statement
 
-import {TradingViewWidget} from "./TradingViewWidget.jsx";
 
 import {CoinList} from "./CoinList.jsx";
 import {Header} from "./Header.jsx";
-import Widget from "./Widget.jsx";
+// import CryptoChart from "./CryptoChart.jsx";
 
-export const Main = () =>{
+
+export const Mainpage = () =>{
 
 
             return (

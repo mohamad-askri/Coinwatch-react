@@ -1,7 +1,7 @@
 import './App.css'
 
 import {Header} from './components/Header'
-import {Main} from './components/Main.jsx'
+import {Mainpage} from './components/Mainpage.jsx'
 import {BrowserRouter ,Routes,Route} from "react-router-dom";
 import {Coinpage} from "./components/Coinpage.jsx";
 import {Setting} from "./components/Setting.jsx";
@@ -18,23 +18,23 @@ function App() {
       <body className="body_dark">
 
       <div className="extension-wrapper">
-          <BrowserRouter>
-<div>
 
+<div>
+    <BrowserRouter>
     <Header/>
               <Routes>
 
 
-                  <Route  path="/"  element={<Main/>} exact />
-                  <Route  path="/setting"  element={<Setting/>}   />
+                  <Route path="/" element={<Mainpage/>} exact />
+                  <Route  path="/setting"  element={<Setting/>}  exact />
 
-                  <Route  path="/coins/:id"  element={<Coinpage/>} />
+                  <Route  path="/coins/:name"  element={<Coinpage/>} />
               </Routes>
 
-
+    </BrowserRouter>
 </div>
 
-          </BrowserRouter>
+
 
 
 

@@ -130,14 +130,29 @@ import React, { useEffect, useState } from 'react';
 import { fetchTop5Coins } from '../config/api.jsx';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 import {CryptoState} from "../CryptoContext.jsx";
-
-
+import {Link} from "react-router-dom";
 
 export function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+// const options = {
+//     headers: {
+//         'Content-Type': 'application/json',
+//       'x-access-token': 'coinrankingf89decd2393dbd09568685d9fdae3c949b672b5c052d9f6d',
+//     },
+// };
+//
+// fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=5&page=1&sparkline=false&x_cg_demo_api_key=CG-YjubLmYWNnUaSJ1dArGTLS2D', options)
+//     .then((response) => response.json())
+//     .then((result) => console.log(result));
+//
+
+
+
  export const CoinList = () => {
     const [trending, setTrending] = useState([]);
+     const { currency ,symbol } = CryptoState();
 
     useEffect(() => {
         fetchTop5Coins()
@@ -153,11 +168,12 @@ export function numberWithCommas(x) {
         <div className="row">
             {trending.map((coin) => {
                 let profit = coin?.price_change_percentage_24h >= 0;
-                console.log(coin)
+
+
                 return (
 
-                    <div className="col-12 coin" key={coin.id}>
-
+                    <div className="col-12 coin" key={coin.name}>
+                        <Link style={{ textDecoration: 'none' }} to={`/coins/${coin.name}`}>
                             <div className="extension-card">
                                 <div className="coin-card">
                                     <div className="coin-profile col-5">
@@ -173,19 +189,19 @@ export function numberWithCommas(x) {
                                     </div>
                                     <div className="coin-small-chart col-4">
                                         <Sparklines data={coin.sparkline} width={100} height={30}>
-                                            <SparklinesLine color="green" style={{ strokeWidth: 1, fill: "none" }} />
+                                            <SparklinesLine color="#089981" style={{ strokeWidth: 1, fill: "none" }} />
                                         </Sparklines>
                                     </div>
                                     <div className="coin-value col-3">
-                                        <h1 className="coin-price">{coin?.price}</h1>
-
-                                        <span className={`coin-change ${profit ? "bullish" : "bearish"}`}>
-                                            {profit ? "+" : ""}{coin?.price_change_percentage_24h?.toFixed(2)}%
-                                        </span>
+                                        <h1 className="coin-price"> {symbol}{numberWithCommas(coin.price)}</h1>
+{/*<span className="coin-price">{coin?.price}</span>*/}
+{/*                                        <span className={`coin-change ${profit ? "bullish" : "bearish"}`}>*/}
+{/*                                            {profit ? "+" : ""}{coin?.price_change_percentage_24h?.toFixed(2)}%*/}
+{/*                                        </span>*/}
                                     </div>
                                 </div>
                             </div>
-
+                            </Link >
                     </div>
                 );
             })}
