@@ -2,6 +2,7 @@
 
 import './destination/Styles/style.css'
 import './destination/Bootstrap/css/bootstrap.min.css'
+import './destination/Bootstrap/js/bootstrap.bundle.js'
 import './destination/Styles/font.css'
 import './destination/Styles/dark-style.css'
 import './destination/Fonts/css/all.css'
@@ -18,7 +19,7 @@ export  function Header() {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-12 header-wrapper">
-                                <Link  className="extension-logo" to={'/'}>
+                                <Link  className="extension-logo" to={'/home'}>
                                     <h1 >
                                         <img src={LOGO} width="150" alt=""/>
                                     </h1>
@@ -37,4 +38,4 @@ export  function Header() {
     )
 }
 
-// export default header
+

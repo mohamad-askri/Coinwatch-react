@@ -1,0 +1,87 @@
+
+        // <BrowserRouter>
+
+    {/*    <Routes>*/
+    }
+
+
+    {/*      <Route path="/" element={<App/>} exact />*/
+    }
+    {/*        /!*<Route path="/setting" element={<Setting/>} exact/>*!/*/
+    }
+
+    {/*/!*         <Route path="/coins/:name" element={<Coinpage/>} />*!/*/
+    }
+    {/*     </Routes>*/
+    }
+
+    {/* </BrowserRouter>*/
+    }
+
+    {/*    <Header/>*/
+    }
+
+
+
+
+
+
+
+
+        {/*      <body className="body_dark">
+
+          <div className="extension-wrapper">
+              <div className="main-page">
+                  <section id="search-bar" className="">
+                      <div className="container-fluid">
+                          <div className="input-group rounded-3">
+                              <input type="text" className="form-control extension-input"
+                                     placeholder="Search for a coin..." />
+                              <div className="input-group-append">
+                                  <button className="btn appended-input-btn" type="button" >
+                                      <i className="fa-solid fa-magnifying-glass"></i>
+                                  </button >
+                              </div>
+                          </div>
+                      </div>
+                  </section>
+
+                  <section id="market-analysis">
+                      <div className="container-fluid ">
+
+
+                          <TradingViewWidget/>
+
+
+
+                      </div>
+                  </section>
+
+                  <section id="top-5-coins" className="mb-5">
+                      <div className="container-fluid">
+                          <div className="section-header text-start text-uppercase mb-3">
+                              <h2>Top 5 Coins</h2>
+                          </div>
+
+
+
+                          <CoinList/>
+
+
+                      </div>
+                  </section>
+
+              </div>
+
+    <div>
+
+    </div>
+
+
+
+
+
+              <Footer/>
+
+       </div>
+          </body>*/}

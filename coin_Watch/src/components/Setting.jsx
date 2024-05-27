@@ -1,13 +1,20 @@
 import {useNavigate} from "react-router-dom";
 import {CryptoState} from "../CryptoContext.jsx";
-export function Setting()   {
+import {useEffect, useState} from "react";
+export function Setting({toggleDarkMode ,darkMode}) {
     let navigate = useNavigate();
     const {currency, setCurrency} = CryptoState();
-    console.log(currency)
+
+
+
+
+    const handleToggleDarkMode = (e) => {
+        toggleDarkMode(e.target.checked); // Pass true if checkbox is checked, false otherwise
+    };
         return (
 
                 <div className="settings-page">
-                    <section className="mb-5" id="extension-settings">
+                    <section className="mb-5" style={{paddingBottom: '300px'}} id="extension-settings">
                         <div className="container-fluid">
                             <div className="section-header text-start text-uppercase mb-3">
                                 <h2>Extension Settings</h2>
@@ -27,7 +34,7 @@ export function Setting()   {
                                             </div>
                                             <div className="settings-item-value">
                                                 <label className="switch">
-                                                    <input type="checkbox" />
+                                                    <input type="checkbox" onChange={handleToggleDarkMode} checked={darkMode}  />
                                                         <span className="slider round"></span>
                                                 </label>
                                             </div>

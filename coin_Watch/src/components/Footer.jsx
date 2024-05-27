@@ -5,25 +5,29 @@ import './destination/Bootstrap/css/bootstrap.min.css'
 import './destination/Styles/font.css'
 import './destination/Styles/dark-style.css'
 import './destination/Fonts/css/all.css'
-class Footer extends Component {
-    render() {
+
+import {Tickertapewidget} from "./Tickertapewidget.jsx"
+
+
+function Footer ({darkMode})  {
+
         return (
-            <div>
-                <body className="body_dark">
-                <div className="extension-wrapper">
+
+
+<>
                 <footer className="">
                     <div className="copy-right text-center p-2">
                         <p>Made with ❤️</p>
                     </div>
                 </footer>
-                </div>
-                </body>
-
-            </div>
 
 
+
+           <Tickertapewidget  darkMode={darkMode}   />
+
+</>
         );
     }
-}
+
 
 export default Footer;
