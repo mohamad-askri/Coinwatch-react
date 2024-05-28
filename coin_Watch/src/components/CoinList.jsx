@@ -45,7 +45,7 @@ export const CoinList = () => {
                                 <div className="coin-card">
                                     <div className="coin-profile col-5">
                                         <div className="coin-icon">
-                                            <img src={coin?.image} alt={coin.name} width="50px"/>
+                                            <img src={coin?.image} alt={coin.name} width="50px"  height="50" />
                                         </div>
                                         <div className="coin-information">
                                             <h2 className="coin-name">{coin.name}</h2>
@@ -60,7 +60,8 @@ export const CoinList = () => {
                                     <div className="coin-small-chart col-4">
                                         <Sparklines data={coin.sparkline_in_7d.price
                                         } width={100} height={30}>
-                                            <SparklinesLine color="#089981" style={{ strokeWidth: 1, fill: "none" }} />
+                                            <SparklinesLine      color={profit ? "#089981" : "#FF0000"}
+                                                                 style={{ strokeWidth: 1, fill: "none" }} />
                                         </Sparklines>
 
 
