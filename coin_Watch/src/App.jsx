@@ -8,6 +8,9 @@ import {Setting} from "./components/Setting.jsx";
 import Footer from "./components/Footer.jsx";
 import React, {useEffect, useState} from "react";
 import {Switch} from "@mui/material";
+import {AboutUs} from "./components/AboutUS.jsx";
+
+
 
 
 
@@ -42,6 +45,7 @@ function App() {
                         <Route path="/setting" element={<Setting toggleDarkMode={toggleDarkMode} darkMode={darkMode} />} exact />
 
                         <Route  path="/coins/:id"  element={<Coinpage darkMode={darkMode} />} />
+                        {/*<Route  path="/about/us" element={<AboutUs/> }  exact/>*/}
 
                     </Routes>
 

@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {CryptoState} from "../CryptoContext.jsx";
-import {useEffect, useState} from "react";
+
 export function Setting({toggleDarkMode ,darkMode}) {
     let navigate = useNavigate();
     const {currency, setCurrency} = CryptoState();

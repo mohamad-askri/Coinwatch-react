@@ -133,7 +133,7 @@ export function Calculator() {
                     <input
                         type="text"
                         className="form-control extension-input"
-                        value={conversionRate ? (amount * conversionRate).toFixed(2) : ""}
+                        value={conversionRate ? (amount * conversionRate).toFixed(2) : " "}
                         aria-label="Enter text"
                         aria-describedby="basic-addon2"
                         readOnly

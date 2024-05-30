@@ -4,10 +4,15 @@ import React, {useEffect, useState} from 'react';
 import TradingViewWidget from './TradingViewWidget.jsx'; // Correct import statement
 
 
+
+
+
+
 import {CoinList} from "./CoinList.jsx";
 import {Header} from "./Header.jsx";
 import {Outlet} from "react-router-dom";
 import {SearchBar} from "./Searchbar.jsx";
+import {PinedCoin} from "./PinedCoin.jsx";
 
 // import CryptoChart from "./CryptoChart.jsx";
 
@@ -20,7 +25,8 @@ export const Mainpage = ({darkMode}) =>{
         <>
 
             <div className="main-page">
-             <SearchBar/>
+                <PinedCoin  darkMode={darkMode} />
+             <SearchBar darkMode={darkMode}/>
 
                 <section id="market-analysis">
                     <div className="container-fluid ">

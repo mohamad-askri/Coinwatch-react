@@ -1,51 +1,85 @@
-import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {CryptoState} from "../CryptoContext.jsx";
-import {SingleCoin} from "../config/api.jsx";
+
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { CryptoState } from "../CryptoContext.jsx";
+import { SingleCoin } from "../config/api.jsx";
 import axios from "axios";
 import DOMPurify from 'dompurify';
-import Coinchart from './Coinchart.jsx'
-import {Timelinewidget} from "./Timelinewidget.jsx";
-import {Calculator} from "./Calculator.jsx";
+import Coinchart from './Coinchart.jsx';
+import { Timelinewidget } from "./Timelinewidget.jsx";
+import { Calculator } from "./Calculator.jsx";
+
 function numberWithCommas(x) {
     if (x) {
         return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     return "N/A";
 }
-export const Coinpage = ({darkMode} ) => {
+
+export const Coinpage = ({ darkMode }) => {
     const { id } = useParams();
     const [coin, setCoin] = useState();
+    const [isPinned, setIsPinned] = useState(false);
     let navigate = useNavigate();
     const { currency, symbol } = CryptoState();
 
     const fetchCoin = async () => {
         const { data } = await axios.get(SingleCoin(id));
-
         setCoin(data);
+        setIsPinned(isCoinPinned(data.id));
     };
 
     useEffect(() => {
         fetchCoin();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [id]);
 
+    const isCoinPinned = (coinId) => {
+        const pinnedCoins = JSON.parse(localStorage.getItem('pinnedCoins')) || [];
+        return pinnedCoins.includes(coinId);
+    };
 
-    let profit = coin?.market_data.price_change_percentage_24h >= 0 ? true : false;
+    const handlePinCoin = () => {
+        let pinnedCoins = JSON.parse(localStorage.getItem('pinnedCoins')) || [];
+        if (isPinned) {
+            pinnedCoins = pinnedCoins.filter(coinId => coinId !== coin.id);
+        } else {
+            pinnedCoins.push(coin.id);
+        }
+        localStorage.setItem('pinnedCoins', JSON.stringify(pinnedCoins));
+        setIsPinned(!isPinned);
+    };
+
+    let profit = coin?.market_data.price_change_percentage_24h >= 0;
     let sym = currency.toLowerCase();
-    const value = coin?.tickers[1].converted_last.btc
-    const roundedValue = Math.ceil(value);
 
     return (
-
-    <>
-
-        <div className="coin-page">
+        <div className={`coin-page ${darkMode ? "dark-mode" : ""}`}>
             <section id="coin-overview" className="mb-5">
                 <div className="container-fluid">
                     <div className="section-header text-start text-uppercase mb-3">
                         <h2>Coin Overview</h2>
-                        <button type="button" className="back-button" onClick={()=>navigate('/')}><i  className="fa-solid fa-chevron-left"></i> Back</button>
+                        <div className="button-group">
+                            <div className="pin-checkbox">
+                                <input
+                                    type="checkbox"
+                                    id="pin"
+                                    className="pin-input"
+                                    checked={isPinned}
+                                    onChange={handlePinCoin}
+                                />
+                                <label htmlFor="pin" className="pin-label">
+                                    <i className="fa-solid fa-thumbtack"></i>
+                                </label>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => navigate('/')}
+                                className="back-button extension-button"
+                            >
+                                <i className="fa-solid fa-chevron-left"></i>
+                                Back
+                            </button>
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-12 coin">
@@ -56,39 +90,32 @@ export const Coinpage = ({darkMode} ) => {
                                             <img src={coin?.image.large} alt={coin?.name} className="img-fluid" />
                                         </div>
                                         <div className="coin-information">
-                                            <h2 className="coin-name">
-                                                {coin?.name}
-                                            </h2>
+                                            <h2 className="coin-name">{coin?.name}</h2>
                                             <div className="coin-abbreviation d-flex gap-3">
                                                 {coin?.symbol}
-                                                <div className="coin-rank">
-                                                    #{coin?.market_cap_rank}
-
-                                                </div>
+                                                <div className="coin-rank">#{coin?.market_cap_rank}</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="coin-value col-">
-                                        <h3 className="coin-price">${numberWithCommas(coin?.market_data.current_price[sym])}
-
+                                        <h3 className="coin-price">
+                                            ${numberWithCommas(coin?.market_data.current_price[sym])}
                                         </h3>
-
-                                        <span className={`coin-change bullish ${profit ? "bullish" : "bearish"}`}>
-                                    {profit ? "+" : ""}{coin?.market_data.price_change_percentage_24h?.toFixed(2)}%</span>
+                                        <span className={`coin-change ${profit ? "bullish" : "bearish"}`}>
+                                            {profit ? "+" : ""}{coin?.market_data.price_change_percentage_24h?.toFixed(2)}%
+                                        </span>
                                     </div>
                                 </div>
                                 <div className="coin-overview-summary">
-                                    <p className="description" dangerouslySetInnerHTML={{
-                                        __html:DOMPurify.sanitize(coin?.description.en.split(". ")[0])
-                                    }}>
-
-
-
-                                    </p>
+                                    <p
+                                        className="description"
+                                        dangerouslySetInnerHTML={{
+                                            __html: DOMPurify.sanitize(coin?.description.en.split(". ")[0])
+                                        }}
+                                    ></p>
                                 </div>
                                 <div className="coin-chart">
-<Coinchart  darkMode={darkMode}  />
-
+                                    <Coinchart darkMode={darkMode} />
                                 </div>
                             </div>
                         </div>
@@ -119,7 +146,6 @@ export const Coinpage = ({darkMode} ) => {
                                     </li>
                                     <li className="coin-metrics-item">
                                         <h3 className="metrics-key">24h Volume</h3>
-
                                         <h3 className="metrics-value">${numberWithCommas(coin?.market_data.total_volume.usd)}</h3>
                                     </li>
                                     <li className="coin-metrics-item">
@@ -134,15 +160,8 @@ export const Coinpage = ({darkMode} ) => {
             </section>
 
             <section id="calculator" className="mb-5">
-            <Calculator/>
-
-
-
+                <Calculator />
             </section>
-
-
-
-
 
             <section id="coin-news" className="mb-5">
                 <div className="container-fluid">
@@ -152,22 +171,12 @@ export const Coinpage = ({darkMode} ) => {
                     <div className="row">
                         <div className="col-12 new">
                             <div className="extension-card">
-
-<Timelinewidget  darkMode={darkMode}   />
-
-
+                                <Timelinewidget darkMode={darkMode} />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
-
-
-
-
         </div>
-
-    </>
-    )
-}
+    );
+};

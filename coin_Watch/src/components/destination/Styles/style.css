@@ -127,6 +127,40 @@ header {
   justify-content: space-between;
 }
 
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.pin-checkbox {
+  display: inline-block;
+  position: relative;
+}
+
+.pin-input {
+  display: none;
+}
+
+.pin-label {
+  cursor: pointer;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  padding: 2px 10px;
+  border-radius: 10px;
+  background-color: transparent;
+  transition: .2s ease-in-out;
+}
+
+.pin-label:hover {
+  color: #ffffff;
+  background-color: var(--accent-color);
+}
+
+.pin-input:checked+.pin-label {
+  color: #ffffff;
+  background-color: var(--accent-color);
+}
+
 .back-button {
   font-size: 14px;
   font-weight: 500;
@@ -204,6 +238,75 @@ main {
   overflow-y: auto;
 }
 
+/*! Pinned Coins Starts */
+
+.remove-coin-btn {
+  display: flex;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--bearish-market-text-color);
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.1s ease-in-out;
+  align-items: center;
+  justify-content: center;
+  transition: .5s;
+  opacity: 0;
+}
+
+.pinned-coin:hover .remove-coin-btn {
+  opacity: 1;
+}
+
+#pinned-coins .row {
+  gap: 15px 0px;
+}
+
+.pinned-coin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 0px 6px 5px;
+  background-color: var(--light-card-bg-color);
+  box-shadow: rgba(99, 99, 99, 0.18) 0px 0px 8px 0px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border-left: 5px solid transparent;
+  transition: all .2s;
+  gap: 5px;
+  position: relative;
+}
+
+.pinned-coin:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 10px 2px;
+  cursor: pointer;
+  border-left: 5px solid var(--accent-color);
+}
+
+
+.pinned-coin .pinned-coin-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: flex;
+}
+
+.pinned-coin .pinned-coin-abbreviation {
+  color: var(--light-heading-text-color);
+  font-weight: 500;
+}
+
+
+/*! Pinned Coins Ends */
+
+
 /*! Top 5 Coins List Starts */
 
 #top-5-coins .row {
@@ -266,7 +369,7 @@ main {
 }
 
 .coin-card .coin-value .coin-price {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--light-heading-text-color);
   font-weight: 500;
 }
@@ -287,9 +390,9 @@ main {
 
 
 #top-5-coins .extension-card {
-    transition: all .2s;
-    box-sizing: border-box;
-    border-left: 5px solid transparent;
+  transition: all .2s;
+  box-sizing: border-box;
+  border-left: 5px solid transparent;
 }
 
 #top-5-coins .extension-card:hover {
@@ -301,7 +404,7 @@ main {
 /*! Top 5 Coins List Ends */
 
 
-/* ! CoinList Overview Starts */
+/* ! Coin Overview Starts */
 #coin-overview .coin-card .coin-profile .coin-icon {
   width: 80px;
   height: 80px;
@@ -333,9 +436,9 @@ main {
   color: var(--light-text-color);
 }
 
-/*! CoinList Overview Ends */
+/*! Coin Overview Ends */
 
-/*! CoinList Metrics Start */
+/*! Coin Metrics Start */
 
 .coin-metrics-table {
   margin: 0 !important;
@@ -365,7 +468,7 @@ main {
   font-weight: 500;
 }
 
-/*! CoinList Metrics End */
+/*! Coin Metrics End */
 
 /*! Calculator Start */
 
@@ -423,7 +526,7 @@ main {
   color: var(--light-bg-color);
   padding: 5px 7px;
   border-radius: 5px;
-  color: va;
+
 }
 
 .switch {
@@ -519,6 +622,12 @@ input:checked+.slider:before {
 
 .copy-right {
   color: var(--light-text-color);
+}
+
+.copy-right a {
+  color: inherit;
+  text-decoration: none;
+  transition: .2s ease-in-out;
 }
 
 /*! Footer Ends */

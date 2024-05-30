@@ -7,6 +7,8 @@ import './destination/Styles/dark-style.css'
 import './destination/Fonts/css/all.css'
 
 import {Tickertapewidget} from "./Tickertapewidget.jsx"
+import {Link} from "react-router-dom";
+
 
 
 function Footer ({darkMode})  {
@@ -15,10 +17,15 @@ function Footer ({darkMode})  {
 
 
 <>
-                <footer className="">
-                    <div className="copy-right text-center p-2">
+                <footer className="copy-right text-center p-2">
+                    {/*<Link to={'/about/us'}>*/}
+
+                    <a href="#">
                         <p>Made with ❤️</p>
-                    </div>
+
+                    </a>
+                    {/*</Link>*/}
+
                 </footer>
 
 

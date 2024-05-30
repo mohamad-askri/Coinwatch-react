@@ -4,6 +4,9 @@ import App from './App.jsx'
 import './index.css'
 import CryptoContext from "./CryptoContext.jsx";
 
+
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <CryptoContext>

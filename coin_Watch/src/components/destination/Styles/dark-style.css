@@ -52,6 +52,14 @@ body.body_dark .extension-input[readonly] {
     color: #ababab !important;
 }
 
+body.body_dark .pinned-coin {
+    background-color: var(--dark-card-bg-color);
+}
+
+body.body_dark .pinned-coin .pinned-coin-abbreviation {
+    color: var(--dark-text-color);
+}
+
 body.body_dark .dropdown-menu {
     background-color: var(--dark-card-bg-color) !important;
 }
